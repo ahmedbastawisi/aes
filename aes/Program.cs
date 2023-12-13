@@ -1,15 +1,18 @@
 ﻿using System.Security.Cryptography;
 
-string original = "Here is some data to encrypt!";
+string original = "hello, world!";
 
 // Create a new instance of the Aes
 // class.  This generates a new key and initialization
 // vector (IV).
 using (Aes aes = Aes.Create())
 {
-    //Display the aes info.
-    Console.WriteLine("Key:   {0}", Convert.ToBase64String(aes.Key));
-    Console.WriteLine("Iv:    {0}", Convert.ToBase64String(aes.IV));
+    // Display the aes info.
+    Console.WriteLine(aes.ToString() + Environment.NewLine);
+    Console.WriteLine("Key:        {0}", Convert.ToBase64String(aes.Key));
+    Console.WriteLine("Iv:         {0}", Convert.ToBase64String(aes.IV));
+    Console.WriteLine("KeySize:    {0}", aes.KeySize);
+    Console.WriteLine("BlockSize:  {0}", aes.BlockSize);
 
     // Encrypt the text to base64 string.
     var encrypted = EncryptString(original, aes.Key, aes.IV);
