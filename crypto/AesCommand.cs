@@ -5,7 +5,17 @@ namespace Crypto.Net.Cryptography;
 
 public static class AesCommand
 {
-    public static void AddAesEncryptCommand(this RootCommand rootCommand, Settings settings)
+    public static void AddAesCommand(this RootCommand rootCommand, Settings settings)
+    {
+        var aesCommand = new Command("aes", "Advanced encryption standard.");
+
+        aesCommand.AddAesEncryptCommand(settings);
+        aesCommand.AddAesDecryptCommand(settings);
+
+        rootCommand.AddCommand(aesCommand);
+    }
+
+    private static void AddAesEncryptCommand(this Command parentCommand, Settings settings)
     {
         var textArgument = new Argument<string>(
             name: "plaintext",
@@ -15,7 +25,7 @@ public static class AesCommand
         {
             textArgument
         };
-        rootCommand.AddCommand(encryptCommand);
+        parentCommand.AddCommand(encryptCommand);
 
         encryptCommand.SetHandler((plaintext) =>
         {
@@ -28,7 +38,7 @@ public static class AesCommand
         }, textArgument);
     }
 
-    public static void AddAesDecryptCommand(this RootCommand rootCommand, Settings settings)
+    private static void AddAesDecryptCommand(this Command parentCommand, Settings settings)
     {
         var textArgument = new Argument<string>(
             name: "ciphertext",
@@ -38,7 +48,7 @@ public static class AesCommand
         {
             textArgument
         };
-        rootCommand.AddCommand(decryptCommand);
+        parentCommand.AddCommand(decryptCommand);
 
         decryptCommand.SetHandler((ciphertext) =>
         {

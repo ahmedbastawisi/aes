@@ -12,8 +12,7 @@ var settings = configuration.GetRequiredSection("Settings").Get<Settings>();
 
 var rootCommand = new RootCommand("Welcome to Crypto.Net");
 
-rootCommand.AddAesEncryptCommand(settings);
-rootCommand.AddAesDecryptCommand(settings);
+rootCommand.AddAesCommand(settings);
 
 args = args.Length != 0 ? args : [.. args, "-h"];
 
