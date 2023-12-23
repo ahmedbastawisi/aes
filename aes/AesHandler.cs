@@ -2,7 +2,7 @@
 
 namespace Crypto.Net.Cryptography;
 
-public static class AesEncryptor
+public static class AesHandler
 {
     public static string Encrypt(string plaintext, string Key, string IV)
     {

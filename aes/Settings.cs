@@ -1,9 +1,8 @@
-﻿namespace Crypto.Net.Settings;
+﻿namespace Crypto.Net.Configuration;
 
 public sealed class Settings
 {
     public required Aes Aes { get; set; }
-
 }
 
 public sealed class Aes
