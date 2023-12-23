@@ -28,7 +28,7 @@ public static class HmacCommand
 
         hashCommand.SetHandler((text) =>
         {
-            var hashed = HmacHandler.Hash(text, "");
+            var hashed = HmacHandler.Hash(text, settings.Hmac.Key);
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(hashed);
