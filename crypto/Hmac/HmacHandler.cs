@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Crypto.Net.Cryptography;
 
-public static class HmacSha256Handler
+public static class HmacHandler
 {
     public static string Hash(string text, string key)
     {

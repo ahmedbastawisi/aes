@@ -3,18 +3,18 @@ using Crypto.Net.Configuration;
 
 namespace Crypto.Net.Cryptography;
 
-public static class HmacSha256Command
+public static class HmacCommand
 {
-    public static void AddHmacSha256Command(this RootCommand rootCommand, Settings settings)
+    public static void AddHmacCommand(this RootCommand rootCommand, Settings settings)
     {
         var sha256Command = new Command("hmac", "HMAC SHA-256 cryptographic hash function.");
 
-        sha256Command.AddHmacSha256HashCommand(settings);
+        sha256Command.AddHmacHashCommand(settings);
 
         rootCommand.AddCommand(sha256Command);
     }
 
-    private static void AddHmacSha256HashCommand(this Command parentCommand, Settings settings)
+    private static void AddHmacHashCommand(this Command parentCommand, Settings settings)
     {
         var textArgument = new Argument<string>(
             name: "text",
@@ -28,7 +28,7 @@ public static class HmacSha256Command
 
         hashCommand.SetHandler((text) =>
         {
-            var hashed = HmacSha256Handler.Hash(text, "");
+            var hashed = HmacHandler.Hash(text, "");
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(hashed);
