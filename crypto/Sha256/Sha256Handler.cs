@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Crypto.Net.Cryptography;
 
-public static class SHA256Handler
+public static class Sha256Handler
 {
     public static string Hash(string text)
     {

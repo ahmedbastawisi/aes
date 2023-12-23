@@ -13,6 +13,8 @@ var settings = configuration.GetRequiredSection("Settings").Get<Settings>();
 var rootCommand = new RootCommand("Welcome to Crypto.Net");
 
 rootCommand.AddAesCommand(settings);
+rootCommand.AddSha256Command(settings);
+rootCommand.AddHmacSha256Command(settings);
 
 args = args.Length != 0 ? args : [.. args, "-h"];
 
