@@ -15,6 +15,8 @@ var rootCommand = new RootCommand("Welcome to Crypto.Net");
 rootCommand.AddAesCommand(settings);
 rootCommand.AddSha256Command(settings);
 rootCommand.AddHmacCommand(settings);
+rootCommand.AddEncodeCommand(settings);
+rootCommand.AddDecodeCommand(settings);
 
 args = args.Length != 0 ? args : [.. args, "-h"];
 
